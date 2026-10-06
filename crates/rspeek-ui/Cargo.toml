@@ -1,0 +1,17 @@
+[package]
+name = "rspeek-ui"
+description = "Shared egui UI components and screens for RSpeek (desktop and web)."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+rspeek-client-core = { workspace = true }
+rspeek-shared = { workspace = true }
+egui = { workspace = true }
+
+[lints]
+workspace = true

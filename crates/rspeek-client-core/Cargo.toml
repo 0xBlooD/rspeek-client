@@ -1,0 +1,17 @@
+[package]
+name = "rspeek-client-core"
+description = "RSpeek client state and networking core (no UI, native + wasm32 compatible)."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+rspeek-shared = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+
+[lints]
+workspace = true

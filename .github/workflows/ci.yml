@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Setup SSH for rspeek-shared
+        if: ${{ env.RSPEEK_SHARED_DEPLOY_KEY != '' }}
+        uses: webfactory/ssh-agent@v0.10.0
+        with:
+          ssh-private-key: ${{ secrets.RSPEEK_SHARED_DEPLOY_KEY }}
+        env:
+          RSPEEK_SHARED_DEPLOY_KEY: ${{ secrets.RSPEEK_SHARED_DEPLOY_KEY }}
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo fmt --all -- --check
+      - run: cargo clippy --workspace --all-targets -- -D warnings
+      - run: cargo test --workspace
+      - run: cargo check --target wasm32-unknown-unknown -p rspeek-client-core -p rspeek-ui -p rspeek-web

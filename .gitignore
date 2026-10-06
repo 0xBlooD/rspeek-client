@@ -1,0 +1,9 @@
+/target
+dist/
+.env
+.cargo/config.toml
+.cargo/config.toml.bak
+.idea/
+.vscode/
+*.swp
+.DS_Store

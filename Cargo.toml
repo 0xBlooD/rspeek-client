@@ -1,0 +1,51 @@
+[workspace]
+members = [
+    "crates/rspeek-client-core",
+    "crates/rspeek-ui",
+    "apps/rspeek",
+    "apps/rspeek-web",
+    "apps/rspeek-cli",
+]
+resolver = "3"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.95"
+publish = false
+license = "LicenseRef-Proprietary"
+repository = "https://github.com/0xBlooD/rspeek-client"
+
+# All dependency versions live here (rule 30-code-style). Ask before adding/changing.
+[workspace.dependencies]
+rspeek-shared = { git = "ssh://git@github.com/0xBlooD/rspeek-shared.git", tag = "v0.1.0" }
+rspeek-client-core = { path = "crates/rspeek-client-core" }
+rspeek-ui = { path = "crates/rspeek-ui" }
+
+anyhow = "1.0.104"
+thiserror = "2.0.21"
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23", features = ["env-filter", "fmt"] }
+tokio = { version = "1.53.2", features = ["macros", "rt-multi-thread", "sync"] }
+
+# GUI
+egui = "0.36.2"
+eframe = "0.36.2"
+
+# TUI
+ratatui = "0.30.2"
+crossterm = "0.29.0"
+
+# Web / WASM
+wasm-bindgen-futures = "0.4.79"
+web-sys = "0.3.106"
+console_error_panic_hook = "0.1.7"
+log = "0.4.34"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+dbg_macro = "warn"
+todo = "warn"
+unwrap_used = "warn"

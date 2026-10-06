@@ -1,0 +1,21 @@
+[package]
+name = "rspeek-web"
+description = "RSpeek web client (WASM via trunk)."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+rspeek-ui = { workspace = true }
+rspeek-client-core = { workspace = true }
+eframe = { workspace = true }
+wasm-bindgen-futures = { workspace = true }
+web-sys = { workspace = true }
+console_error_panic_hook = { workspace = true }
+log = { workspace = true }
+
+[lints]
+workspace = true
